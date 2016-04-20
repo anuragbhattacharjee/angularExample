@@ -1,0 +1,11 @@
+﻿<ul ng-repeat="country in countries" ng-init="disctricts = country.cities">
+    <li>
+        {{country.name}}
+
+        <ul ng-repeat="district in disctricts">
+            <li>
+                {{district.name}}
+            </li>
+        </ul>
+    </li>
+</ul>

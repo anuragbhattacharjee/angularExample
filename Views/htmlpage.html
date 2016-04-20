@@ -1,0 +1,73 @@
+﻿<!--<html ng-app="serviceModule">-->
+
+<div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Likes</th>
+                <th>DisLikes</th>
+                <th>Like/Dislikes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="technology in technologies ">
+                <td>{{ technology.name }}</td>
+                <td>{{ technology.likes }}</td>
+                <td>{{ technology.dislikes }}</td>
+                <td>
+                    <input type="button" value="Like" ng-click="incrementLikes(technology)" />
+                    <input type="button" value="Dislike" ng-click="incrementDisLikes(technology)" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br /> <br />
+    Rows To display: <input type="number" step="1" min="0" max="5" ng-model="rowLimit" /> <br /> <br />
+    Search : <input type="text" placeholder="Search employees" ng-model="searchText.name" />
+    Search : <input type="text" placeholder="Search city" ng-model="searchText.city" />
+    <input type="checkbox" ng-model="exactMatch" /> Exact Match
+    <br /> <br />
+    <input type="checkbox" ng-model="hideSalary" /> Hide Salary
+    <br /> <br />
+    Search Name & City: <input type="text" placeholder="Search Name & city" ng-model="searchTextMultiple" /> <br /> <br />
+    <table>
+        <thead>
+            <tr>
+                <th ng-click="sortData('name')">Name <div ng-class="getSortClass('name')"></div></th>
+                <th ng-click="sortData('dateOfBirth')">Date Of Birth <div ng-class="getSortClass('dateOfBirth')"></div> </th>
+                <th ng-click="sortData('gender')">Gender <div ng-class="getSortClass('gender')"></div> </th>
+                <th ng-click="sortData('city')">City <div ng-class="getSortClass('city')"></div> </th>
+                <th ng-click="sortData('department')">Department <div ng-class="getSortClass('department')"></div> </th>
+                <th ng-click="sortData('salary')" ng-hide="hideSalary">Salary (number) <div ng-class="getSortClass('salary')"></div> </th>
+                <th ng-show="hideSalary">Salary (number) </th>
+                <th ng-click="sortData('salary')" ng-hide="hideSalary">Salary (currency) <div ng-class="getSortClass('salary')"></div> </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="employee in employees | orderBy: sortColumn:reverseSort | limitTo: rowLimit: 0 | filter: search | filter: searchText:exactMatch">
+                <td>{{ employee.name | uppercase}}</td>
+                <td>{{ employee.dateOfBirth | date: "dd/MM/yyyy" }}</td>
+                <td>{{ employee.gender | lowercase }}</td>
+                <td>{{ employee.city }}</td>
+                <td>{{ employee.department | department }}</td>
+                <td ng-hide="hideSalary">{{ employee.salary | number:2 }}</td>
+                <td ng-show="hideSalary"> ### </td>
+                <td ng-hide="hideSalary">{{ employee.salary | currency: "tk " : 0 }}</td>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <br /> <br />
+    <br /> <br />
+    Select Display Type :
+    <select ng-model="citiesPage">
+        <option value="CountryTable.html">Table</option>
+        <option value="CountryList.html">List</option>
+    </select>
+    <br /> <br />
+    <div ng-include="citiesPage"></div>
+</div>

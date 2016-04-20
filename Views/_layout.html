@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html ng-app="Demo">
+<head>
+    <meta charset="utf-8" />
+    <title>Angular Test</title>
+
+    <!--Libreries-->
+    <script src="../Scripts/jquery.js"></script>
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+    <script src="../Scripts/Services/angular-route.js"></script>
+
+    <!--Custom JS-->
+    <!--<script src="scripts/Controller/app.js"></script>-->
+    <script src="../Scripts/app.js"></script>
+    <script src="../Scripts/route-config.js"></script>
+    <script src="../Scripts/Controller/serviceController.js"></script>
+    <script src="../Scripts/Controller/myController.js"></script>
+ 
+    <!--<script src="Scripts/Controller/serviceExample.js"></script>-->
+    <script src="../Scripts/Services/stringService.js"></script>
+    <script src="../Scripts/Filters.js"></script>
+    <!--<script src="../Scripts/Controller/script.js"></script>-->
+
+
+    <link href="../css/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                <a href="#/home">Home</a>
+                <a href="#/services">Service</a>
+             
+            </td>
+        </tr>
+    </table>
+    <ng-view></ng-view>
+</body>
+</html>

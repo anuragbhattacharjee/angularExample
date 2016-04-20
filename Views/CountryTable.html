@@ -1,0 +1,20 @@
+﻿<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Cities</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="country in countries" ng-init="disctricts = country.cities">
+            <td>{{ country.name }}</td>
+            <td>
+                <ul ng-repeat="district in disctricts">
+                    <li>
+                        {{district.name}}
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
